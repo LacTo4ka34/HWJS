@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="Uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>размер окна</title>
+</head>
+
+<body>
+    <p>измерение размера окна онлайн!!!!!!!</p>
+    <p>висота: <span id="height"></p>
+    <p>ширина: <span id="width"></p>
+
+
+    <script>
+        const heightOutput = document.querySelector("#height");
+        const widthOutput = document.querySelector("#width");
+     
+
+
+        function reportWindowSize() { //функция для отслеживания изменения размера окна и вывода его на экран и когда экран меньше чем 500 пикселей то выводит предупреждение
+            heightOutput.textContent = window.innerHeight; //выводит высоту окна
+            widthOutput.textContent = window.innerWidth; //выводит ширину окна
+
+
+            if (window.innerWidth < 500) { //если ширина окна меньше 500 пикселей то окно становится красным и выводится надпись
+                document.body.style.backgroundColor = "red"; //цвет окна становится красным
+                const element = document.createElement("h1");   //константа с названием элемент в которой создается элемент h1
+                element.textContent = "окно слишком маленькое" //елемент с контентом который выводится на экран
+                document.body.appendChild(element); //добавляется элемент на страницу
+
+            }
+             
+            else{  //если окно больше 500 пикселей то окно становится белым и удаляется надпись
+                document.body.style.backgroundColor = "white"; //тут делаем цвет белым
+                const element = document.querySelector("h1");   //константа с названием елемент в которой обращаемся к элементу h1 что бы его удалить
+                if
+                (element)
+                {
+                    document.body.removeChild(element); //удаляем элемент
+                }
+
+            }
+        }
+
+        window.onresize = reportWindowSize; //вызов функции при изменении размера окна
+
+    </script>
+</body>
+
+</html>

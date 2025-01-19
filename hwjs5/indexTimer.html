@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>таймер</title>
+</head>
+<body>
+    <h1>внимание ваша страница заражена бомбой</h1>
+    <p>до взрыва осталось: <span id="timer"></span></p>
+
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        h1 {
+            color: red;
+        }
+
+        #timer {
+            font-size: 666px;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        const timerOutput = document.querySelector("#timer"); //константа в которой обращаемся к элементу с id timer
+        let time = 10; //переменная с временем
+
+        function timer() { //функция таймера
+            timerOutput.textContent = time;     //выводим время на экран
+            time--;    
+
+            if (time < 0) { //если время меньше 0 то переходим на другую страницу
+                setTimeout(function(){ //функция которая перенаправляет на другую страницу как только закончиться время
+                    const url = (window.location.href); //переменная с адресом текущей страницы
+                    location.assign("https://img.gazeta.ru/files3/224/17538224/upload-shutterstock_110179493-pic4_zoom-1500x1500-44298.jpg");
+                }
+            )}
+        }
+
+        timer();     //вызов функции таймера
+        const interval = setInterval(timer, 1000); //вызов функции таймера каждую секунду
+    </script>
+</body>
+</html>
